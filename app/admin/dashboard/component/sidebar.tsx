@@ -90,7 +90,7 @@ export default function Sidebar() {
 export const MobileNav = () => {
   const { signOut } = useAuth();
   return (
-    <div className="p-10 absolute -ml-8 mt-2 ">
+    <div className="p-10 absolute -ml-6 -mt-5 ">
       <Sheet>
         <SheetTrigger asChild>
           <Button variant="outline" size="icon" className="shrink-0 md:hidden">

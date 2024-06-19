@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} rounded-md bg-[#060C27]`}>
+      <body className={`${inter.className} rounded-md bg-[#060C27]`} suppressHydrationWarning >
         <div className="flex gap-2">
           <Sidebar />
 

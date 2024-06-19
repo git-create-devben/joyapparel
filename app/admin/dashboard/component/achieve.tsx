@@ -9,7 +9,7 @@ import {
 
 export default function  Achieve() {
   return (
-    <Card className="bg-[#050B26] border border-dashed text-white">
+    <Card className="bg-[#050B26] border border-dashed text-white hidden">
       <CardHeader>
         <CardTitle>????????</CardTitle>
         <CardDescription>

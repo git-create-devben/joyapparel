@@ -37,7 +37,7 @@ import { ProductType } from "@/types/ProductTypes";
 import { format } from "date-fns";
 import Link from "next/link";
 import { DeleteProduct } from "@/hooks/useDelete";
-import { EditProduct } from "@/hooks/useEdit";
+import { UpdateProduct } from "@/hooks/useEdit";
 import { queryClient } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 
@@ -219,7 +219,7 @@ export default function Product() {
               </TableBody>
             </Table>
           </CardContent>
-          <CardFooter>
+          <CardFooter className="hidden">
             <div className="text-xs text-muted-foreground">
               Showing <strong>1-10</strong> of <strong>32</strong> products
             </div>

@@ -14,6 +14,7 @@ interface StockDetail {
     description: string;
     status: string;
     category: string;
+    subCate: string;
     stockDetails: Record<string, StockDetail>;
     imageUrls: string[];
     createdAt: Timestamp; // Use the Timestamp type for createdAt
