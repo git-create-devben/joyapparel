@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { FetchProductById, UpdateProduct } from "@/hooks/useEdit"; // your fetch and update functions
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { ProductType } from "@/types/ProductTypes";
 import Image from "next/image";
 import Link from "next/link";
@@ -57,10 +57,12 @@ import toast from "react-hot-toast";
 const EditProduct = () => {
   const { productId } = useParams() as { productId: string };
   const queryClient = useQueryClient();
+  const router = useRouter()
   const {
     data: product,
     isLoading,
     error,
+    isPending
   } = useQuery<ProductType>({
     queryKey: ["product", productId],
     queryFn: () => FetchProductById(productId),
@@ -78,7 +80,10 @@ const EditProduct = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["products"] });
       queryClient.invalidateQueries({ queryKey: ["product", productId] });
+      // router.push("/admin/dashboard/product")
+
     },
+    
     onError: (error) => {
       console.error('Error updating product:', error);
     },
@@ -137,7 +142,8 @@ const EditProduct = () => {
                   </Button>
                 </Link>
                 <Button size="sm" variant="outline" type="submit" className="">
-                  Save Product
+                  {isPending? "Saving...": "Save product"}
+
                 </Button>
               </div>
             </div>
