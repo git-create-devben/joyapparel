@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
+import { TanstackProvider } from "@/providers/TanstackProvider";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +20,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head>
+        <script src="http://localhost:8097" async></script>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+      </head>
+      <body className={inter.className} suppressHydrationWarning>
+        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+           <TanstackProvider>
+           {children}
+           </TanstackProvider>
+            
+
+          <Toaster position="top-right" />
+        </AppRouterCacheProvider>
+      </body>
     </html>
   );
 }
